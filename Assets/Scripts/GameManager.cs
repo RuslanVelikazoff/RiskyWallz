@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
@@ -83,7 +82,6 @@ public class GameManager : MonoBehaviour
         _scoreText.text = score.ToString();
         _scoreAnimator.Play(_scoreClip.name, -1, 0f);
 
-        //Fire UpdateScoreColorEvent
         int temp = UnityEngine.Random.Range(0, _totalScoreTargets);
         while (temp == currentTargetIndex)
         {
@@ -125,7 +123,6 @@ public class GameManager : MonoBehaviour
         {
             _highScoreText.text = "NEW BEST";
 
-            //Play HighScore Animation
             _highScoreAnimator.Play(_highScoreClip.name,-1,0f);
 
             highScore = score;
@@ -153,7 +150,6 @@ public class GameManager : MonoBehaviour
         _scoreText.gameObject.SetActive(false);
         yield return MoveCamera(_cameraEndPos);
 
-        //Start Event Conditons
         currentTargetIndex = 0;
 
         int temp = UnityEngine.Random.Range(0, _totalScoreTargets);
@@ -165,7 +161,6 @@ public class GameManager : MonoBehaviour
 
         UpdateScoreColor?.Invoke(currentTargetIndex);
 
-        //Score
         _scoreText.gameObject.SetActive(true);
         score = 0;
         _scoreText.text = score.ToString();
